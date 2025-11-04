@@ -17,6 +17,7 @@ git clone https://github.com/vishalseelam/zeph-crm
 
 2. Install dependencies:
 ```bash
+cd zeph-crm
 npm install
 ```
 
