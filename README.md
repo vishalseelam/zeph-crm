@@ -12,7 +12,7 @@ A comprehensive, intelligent CRM system built for Zeph Breath to manage patient 
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/vishalseelam/zeph-crm
 ```
 
 2. Install dependencies:
