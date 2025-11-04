@@ -1,0 +1,1758 @@
+export const cohorts = [
+  {
+    id: 'COH-001',
+    type: 'PROGRAM COHORT',
+    size: 15,
+    liveSessionType: '90 MINUTES',
+    liveDays: 'M-W',
+    liveTime: '10:00 AM',
+    soloDays: 'T-Th',
+    soloTime: '2:00 PM',
+  },
+  {
+    id: 'COH-002',
+    type: 'PROGRAM COHORT',
+    size: 12,
+    liveSessionType: '60 MINUTES',
+    liveDays: 'T-Th',
+    liveTime: '3:00 PM',
+    soloDays: 'M-W-F',
+    soloTime: '11:00 AM',
+  },
+  {
+    id: 'COH-003',
+    type: 'MAINTENANCE COHORT',
+    size: 10,
+    liveSessionType: '60 MINUTES',
+    liveDays: 'M-W-F',
+    liveTime: '6:00 PM',
+    soloDays: 'T-Th',
+    soloTime: '7:00 PM',
+  }
+];
+
+export const cohortTypes = ['PROGRAM COHORT', 'MAINTENANCE COHORT'];
+export const liveSessionTypes = ['60 MINUTES', '90 MINUTES'];
+
+export const patients = [
+  {
+    id: 'PAT-001',
+    mrn: 'MRN-10001',
+    name: 'Anderson, Emily',
+    state: 'AZ',
+    clinicId: 'CLINIC-001',
+    source: 'Referral',
+    currentStage: 'Program',
+    currentSubStage: 'Live Session 15',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-08-15',
+    kitLocation: 'WITH PATIENT',
+    kitId: 'KIT-10001',
+    shippedFrom: 'IMPILO AZ',
+    outboundShipped: '2024-08-10',
+    outboundDelivered: '2024-08-15',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-08-20',
+    referred: '2024-07-15',
+    enrollmentAttempted: '2024-07-20',
+    enrollmentCompleted: '2024-07-25',
+    onboardingAttempted: '2024-08-15',
+    onboardingCompleted: '2024-08-20',
+    
+    programStage: 'Active',
+    programTime: '2024-08-25',
+    liveSessionsAttended: 15,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '83%',
+    soloSessionsAttended: 7,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '88%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  {
+    id: 'PAT-002',
+    mrn: 'MRN-10002',
+    name: 'Brown, David',
+    state: 'CA',
+    clinicId: 'CLINIC-002',
+    source: 'Direct',
+    currentStage: 'Program',
+    currentSubStage: 'Live Session 8',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-28',
+    lastRiskType: 'Engagement',
+    lastRiskTriggered: '2024-10-25',
+    lastRiskMitigationAttempted: '2024-10-27',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-09-10',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10002',
+    shippedFrom: 'Los Angeles Warehouse',
+    outboundShipped: '2024-09-05',
+    outboundDelivered: '2024-09-10',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-09-15',
+    referred: '2024-08-01',
+    enrollmentAttempted: '2024-08-10',
+    enrollmentCompleted: '2024-08-15',
+    onboardingAttempted: '2024-09-10',
+    onboardingCompleted: '2024-09-15',
+    
+    programStage: 'Active',
+    programTime: '2024-09-20',
+    liveSessionsAttended: 8,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '44%',
+    soloSessionsAttended: 3,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '38%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 3: Active Deferral - Medical
+  {
+    id: 'PAT-003',
+    mrn: 'MRN-10003',
+    name: 'Chen, Michelle',
+    state: 'TX',
+    clinicId: 'CLINIC-001',
+    source: 'Referral',
+    currentStage: 'Program',
+    currentSubStage: 'Deferred',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: 'Active',
+    lastDeferralTime: '2024-10-15',
+    lastDeferralInitiated: '2024-10-15',
+    lastDeferralCategory: 'Medical',
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: '2024-10-16',
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-09-01',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10003',
+    shippedFrom: 'Houston Warehouse',
+    outboundShipped: '2024-08-28',
+    outboundDelivered: '2024-09-01',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-09-05',
+    referred: '2024-08-01',
+    enrollmentAttempted: '2024-08-10',
+    enrollmentCompleted: '2024-08-15',
+    onboardingAttempted: '2024-09-01',
+    onboardingCompleted: '2024-09-05',
+    
+    programStage: 'Active',
+    programTime: '2024-09-10',
+    liveSessionsAttended: 10,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '56%',
+    soloSessionsAttended: 6,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '75%',
+    cohortId: 'COH-002',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 4: Multiple Risks & Deferrals (Complex Case)
+  {
+    id: 'PAT-004',
+    mrn: 'MRN-10004',
+    name: 'Davis, Robert',
+    state: 'FL',
+    clinicId: 'CLINIC-003',
+    source: 'Referral',
+    currentStage: 'Program',
+    currentSubStage: 'Live Session 12',
+    
+    lastRiskStage: 'Mitigated',
+    lastRiskTime: '2024-10-20',
+    lastRiskType: 'Payment',
+    lastRiskTriggered: '2024-10-10',
+    lastRiskMitigationAttempted: '2024-10-15',
+    lastRiskMitigationCompleted: '2024-10-20',
+    
+    lastDeferralStage: 'Completed',
+    lastDeferralTime: '2024-09-30',
+    lastDeferralInitiated: '2024-09-01',
+    lastDeferralCategory: 'Personal',
+    lastDeferralEnded: '2024-09-30',
+    lastClinicAssistanceRequested: '2024-09-02',
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-07-25',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10004',
+    shippedFrom: 'Miami Warehouse',
+    outboundShipped: '2024-07-20',
+    outboundDelivered: '2024-07-25',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-07-30',
+    referred: '2024-06-15',
+    enrollmentAttempted: '2024-06-25',
+    enrollmentCompleted: '2024-07-01',
+    onboardingAttempted: '2024-07-25',
+    onboardingCompleted: '2024-07-30',
+    
+    programStage: 'Active',
+    programTime: '2024-08-05',
+    liveSessionsAttended: 12,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '67%',
+    soloSessionsAttended: 5,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '63%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 5: New Patient - Just Started Ramp On
+  {
+    id: 'PAT-005',
+    mrn: 'MRN-10005',
+    name: 'Evans, Sarah',
+    state: 'NY',
+    clinicId: 'CLINIC-002',
+    source: 'Direct',
+    currentStage: 'Ramp On',
+    currentSubStage: 'Enrollment',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Pending',
+    kitTime: null,
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10005',
+    shippedFrom: null,
+    outboundShipped: null,
+    outboundDelivered: null,
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'In Progress',
+    rampOnTime: '2024-10-28',
+    referred: '2024-10-15',
+    enrollmentAttempted: '2024-10-20',
+    enrollmentCompleted: '2024-10-25',
+    onboardingAttempted: null,
+    onboardingCompleted: null,
+    
+    programStage: 'Not Started',
+    programTime: null,
+    liveSessionsAttended: 0,
+    liveSessionsAvailable: 0,
+    liveSessionAttendance: 'N/A',
+    soloSessionsAttended: 0,
+    soloSessionsAvailable: 0,
+    soloSessionAttendance: 'N/A',
+    cohortId: null,
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 6: Kit Delayed - Delivery Issue
+  {
+    id: 'PAT-006',
+    mrn: 'MRN-10006',
+    name: 'Foster, James',
+    state: 'WA',
+    clinicId: 'CLINIC-004',
+    source: 'Referral',
+    currentStage: 'Kit',
+    currentSubStage: 'In Transit',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'In Transit',
+    kitTime: '2024-10-20',
+    kitLocation: 'In Transit',
+    kitId: 'KIT-10006',
+    shippedFrom: 'Seattle Warehouse',
+    outboundShipped: '2024-10-20',
+    outboundDelivered: null,
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-10-15',
+    referred: '2024-09-20',
+    enrollmentAttempted: '2024-09-25',
+    enrollmentCompleted: '2024-10-01',
+    onboardingAttempted: '2024-10-10',
+    onboardingCompleted: '2024-10-15',
+    
+    programStage: 'Pending',
+    programTime: null,
+    liveSessionsAttended: 0,
+    liveSessionsAvailable: 0,
+    liveSessionAttendance: 'N/A',
+    soloSessionsAttended: 0,
+    soloSessionsAvailable: 0,
+    soloSessionAttendance: 'N/A',
+    cohortId: null,
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 7: Maintenance with Payment Issues
+  {
+    id: 'PAT-007',
+    mrn: 'MRN-10007',
+    name: 'Garcia, Maria',
+    state: 'TX',
+    clinicId: 'CLINIC-001',
+    source: 'Referral',
+    currentStage: 'Maintenance',
+    currentSubStage: 'Month 4',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-25',
+    lastRiskType: 'Payment',
+    lastRiskTriggered: '2024-10-20',
+    lastRiskMitigationAttempted: '2024-10-22',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Returned',
+    kitTime: '2024-09-15',
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10007',
+    shippedFrom: 'Houston Warehouse',
+    outboundShipped: '2024-06-10',
+    outboundDelivered: '2024-06-15',
+    inboundRequestAttempted: '2024-09-10',
+    inboundShipped: '2024-09-12',
+    inboundDelivered: '2024-09-15',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-06-20',
+    referred: '2024-05-01',
+    enrollmentAttempted: '2024-05-10',
+    enrollmentCompleted: '2024-05-15',
+    onboardingAttempted: '2024-06-15',
+    onboardingCompleted: '2024-06-20',
+    
+    programStage: 'Completed',
+    programTime: '2024-09-10',
+    liveSessionsAttended: 18,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '100%',
+    soloSessionsAttended: 8,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '100%',
+    cohortId: 'COH-002',
+    
+    maintenanceStage: 'Active',
+    maintenanceTime: '2024-09-15',
+    maintenancePayments: [
+      { month: 1, started: '2024-09-15', paid: true, amount: 299 },
+      { month: 2, started: '2024-10-15', paid: true, amount: 299 },
+      { month: 3, started: '2024-11-15', paid: false, amount: 299 },
+      { month: 4, started: '2024-12-15', paid: false, amount: 299 }
+    ],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 8: Successfully Completed - Ramp Off
+  {
+    id: 'PAT-008',
+    mrn: 'MRN-10008',
+    name: 'Harris, Jennifer',
+    state: 'IL',
+    clinicId: 'CLINIC-005',
+    source: 'Referral',
+    currentStage: 'Ramp Off',
+    currentSubStage: 'Offboarding',
+    
+    lastRiskStage: 'Resolved',
+    lastRiskTime: '2024-07-20',
+    lastRiskType: 'Attendance',
+    lastRiskTriggered: '2024-07-10',
+    lastRiskMitigationAttempted: '2024-07-15',
+    lastRiskMitigationCompleted: '2024-07-20',
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Returned',
+    kitTime: '2024-10-25',
+    kitLocation: 'IMPILO AZ',
+    kitId: 'KIT-10008',
+    shippedFrom: 'IMPILO AZ',
+    outboundShipped: '2024-04-01',
+    outboundDelivered: '2024-04-05',
+    inboundRequestAttempted: '2024-10-20',
+    inboundShipped: '2024-10-22',
+    inboundDelivered: '2024-10-25',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-04-10',
+    referred: '2024-03-01',
+    enrollmentAttempted: '2024-03-05',
+    enrollmentCompleted: '2024-03-10',
+    onboardingAttempted: '2024-04-05',
+    onboardingCompleted: '2024-04-10',
+    
+    programStage: 'Completed',
+    programTime: '2024-07-15',
+    liveSessionsAttended: 18,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '100%',
+    soloSessionsAttended: 7,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '88%',
+    cohortId: 'COH-003',
+    
+    maintenanceStage: 'Completed',
+    maintenanceTime: '2024-10-20',
+    maintenancePayments: [
+      { month: 1, started: '2024-07-20', paid: true, amount: 299 },
+      { month: 2, started: '2024-08-20', paid: true, amount: 299 },
+      { month: 3, started: '2024-09-20', paid: true, amount: 299 }
+    ],
+    
+    rampOffStage: 'In Progress',
+    rampOffTime: '2024-10-20',
+    offboardingAttempted: '2024-10-20',
+    offboardingCompleted: null,
+    exitCategory: 'PROGRAM COMPLETED',
+    exitDate: '2024-11-01'
+  },
+  
+  // CASE 9: Early Exit - Medical Reasons
+  {
+    id: 'PAT-009',
+    mrn: 'MRN-10009',
+    name: 'Ibrahim, Omar',
+    state: 'MA',
+    clinicId: 'CLINIC-006',
+    source: 'Direct',
+    currentStage: 'Ramp Off',
+    currentSubStage: 'Completed',
+    
+    lastRiskStage: 'Resolved',
+    lastRiskTime: '2024-08-15',
+    lastRiskType: 'Medical',
+    lastRiskTriggered: '2024-08-10',
+    lastRiskMitigationAttempted: '2024-08-12',
+    lastRiskMitigationCompleted: '2024-08-15',
+    
+    lastDeferralStage: 'Completed',
+    lastDeferralTime: '2024-08-20',
+    lastDeferralInitiated: '2024-08-05',
+    lastDeferralCategory: 'Medical',
+    lastDeferralEnded: '2024-08-20',
+    lastClinicAssistanceRequested: '2024-08-06',
+    
+    kitStage: 'Returned',
+    kitTime: '2024-08-25',
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10009',
+    shippedFrom: 'Boston Warehouse',
+    outboundShipped: '2024-06-01',
+    outboundDelivered: '2024-06-05',
+    inboundRequestAttempted: '2024-08-20',
+    inboundShipped: '2024-08-22',
+    inboundDelivered: '2024-08-25',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-06-10',
+    referred: '2024-05-15',
+    enrollmentAttempted: '2024-05-20',
+    enrollmentCompleted: '2024-05-25',
+    onboardingAttempted: '2024-06-05',
+    onboardingCompleted: '2024-06-10',
+    
+    programStage: 'Incomplete',
+    programTime: '2024-08-15',
+    liveSessionsAttended: 8,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '44%',
+    soloSessionsAttended: 4,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '50%',
+    cohortId: 'COH-002',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Completed',
+    rampOffTime: '2024-08-30',
+    offboardingAttempted: '2024-08-25',
+    offboardingCompleted: '2024-08-30',
+    exitCategory: 'Early Exit - Medical',
+    exitDate: '2024-08-30'
+  },
+  
+  // CASE 10: Perfect Completer - Full Journey
+  {
+    id: 'PAT-010',
+    mrn: 'MRN-10010',
+    name: 'Johnson, Michael',
+    state: 'AZ',
+    clinicId: 'CLINIC-001',
+    source: 'Referral',
+    currentStage: 'Maintenance',
+    currentSubStage: 'Month 6',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Returned',
+    kitTime: '2024-09-01',
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10010',
+    shippedFrom: 'Phoenix Warehouse',
+    outboundShipped: '2024-03-10',
+    outboundDelivered: '2024-03-15',
+    inboundRequestAttempted: '2024-08-25',
+    inboundShipped: '2024-08-28',
+    inboundDelivered: '2024-09-01',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-03-20',
+    referred: '2024-02-01',
+    enrollmentAttempted: '2024-02-10',
+    enrollmentCompleted: '2024-02-15',
+    onboardingAttempted: '2024-03-15',
+    onboardingCompleted: '2024-03-20',
+    
+    programStage: 'Completed',
+    programTime: '2024-08-15',
+    liveSessionsAttended: 18,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '100%',
+    soloSessionsAttended: 8,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '100%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Active',
+    maintenanceTime: '2024-08-20',
+    maintenancePayments: [
+      { month: 1, started: '2024-08-20', paid: true, amount: 299 },
+      { month: 2, started: '2024-09-20', paid: true, amount: 299 },
+      { month: 3, started: '2024-10-20', paid: true, amount: 299 },
+      { month: 4, started: '2024-11-20', paid: true, amount: 299 },
+      { month: 5, started: '2024-12-20', paid: true, amount: 299 },
+      { month: 6, started: '2025-01-20', paid: true, amount: 299 }
+    ],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 11: Both Active Risk AND Deferral
+  {
+    id: 'PAT-011',
+    mrn: 'MRN-10011',
+    name: 'Kumar, Priya',
+    state: 'CA',
+    clinicId: 'CLINIC-002',
+    source: 'Referral',
+    currentStage: 'Program',
+    currentSubStage: 'Deferred',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-28',
+    lastRiskType: 'Technical',
+    lastRiskTriggered: '2024-10-25',
+    lastRiskMitigationAttempted: '2024-10-26',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: 'Active',
+    lastDeferralTime: '2024-10-20',
+    lastDeferralInitiated: '2024-10-20',
+    lastDeferralCategory: 'Technical',
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: '2024-10-21',
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-08-10',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10011',
+    shippedFrom: 'Los Angeles Warehouse',
+    outboundShipped: '2024-08-05',
+    outboundDelivered: '2024-08-10',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-08-15',
+    referred: '2024-07-01',
+    enrollmentAttempted: '2024-07-10',
+    enrollmentCompleted: '2024-07-15',
+    onboardingAttempted: '2024-08-10',
+    onboardingCompleted: '2024-08-15',
+    
+    programStage: 'Active',
+    programTime: '2024-08-20',
+    liveSessionsAttended: 6,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '33%',
+    soloSessionsAttended: 2,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '25%',
+    cohortId: 'COH-002',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 12: Failed Enrollment
+  {
+    id: 'PAT-012',
+    mrn: 'MRN-10012',
+    name: 'Lee, Kevin',
+    state: 'OR',
+    clinicId: 'CLINIC-007',
+    source: 'Direct',
+    currentStage: 'Ramp On',
+    currentSubStage: 'Enrollment Pending',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Pending',
+    kitTime: null,
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10012',
+    shippedFrom: null,
+    outboundShipped: null,
+    outboundDelivered: null,
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'In Progress',
+    rampOnTime: '2024-10-25',
+    referred: '2024-10-01',
+    enrollmentAttempted: '2024-10-10',
+    enrollmentCompleted: null,
+    onboardingAttempted: null,
+    onboardingCompleted: null,
+    
+    programStage: 'Not Started',
+    programTime: null,
+    liveSessionsAttended: 0,
+    liveSessionsAvailable: 0,
+    liveSessionAttendance: 'N/A',
+    soloSessionsAttended: 0,
+    soloSessionsAvailable: 0,
+    soloSessionAttendance: 'N/A',
+    cohortId: null,
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 13: Kit Lost/Not Returned
+  {
+    id: 'PAT-013',
+    mrn: 'MRN-10013',
+    name: 'Martinez, Carlos',
+    state: 'NM',
+    clinicId: 'CLINIC-008',
+    source: 'Referral',
+    currentStage: 'Ramp Off',
+    currentSubStage: 'Kit Follow-up',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-28',
+    lastRiskType: 'Equipment',
+    lastRiskTriggered: '2024-10-15',
+    lastRiskMitigationAttempted: '2024-10-20',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Not Returned',
+    kitTime: '2024-10-28',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10013',
+    shippedFrom: 'Phoenix Warehouse',
+    outboundShipped: '2024-05-01',
+    outboundDelivered: '2024-05-05',
+    inboundRequestAttempted: '2024-10-01',
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-05-10',
+    referred: '2024-04-01',
+    enrollmentAttempted: '2024-04-10',
+    enrollmentCompleted: '2024-04-15',
+    onboardingAttempted: '2024-05-05',
+    onboardingCompleted: '2024-05-10',
+    
+    programStage: 'Completed',
+    programTime: '2024-09-25',
+    liveSessionsAttended: 16,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '89%',
+    soloSessionsAttended: 7,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '88%',
+    cohortId: 'COH-003',
+    
+    maintenanceStage: 'Waived',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'In Progress',
+    rampOffTime: '2024-10-01',
+    offboardingAttempted: '2024-10-01',
+    offboardingCompleted: '2024-10-05',
+    exitCategory: 'Early Exit - Medical',
+    exitDate: '2024-10-05'
+  },
+  
+  // CASE 14: Inactive - No Contact
+  {
+    id: 'PAT-014',
+    mrn: 'MRN-10014',
+    name: 'Nguyen, Lisa',
+    state: 'VA',
+    clinicId: 'CLINIC-009',
+    source: 'Referral',
+    currentStage: 'Ramp On',
+    currentSubStage: 'Onboarding Attempted',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-28',
+    lastRiskType: 'Communication',
+    lastRiskTriggered: '2024-10-15',
+    lastRiskMitigationAttempted: '2024-10-20',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-10-10',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10014',
+    shippedFrom: 'Washington DC Warehouse',
+    outboundShipped: '2024-10-05',
+    outboundDelivered: '2024-10-10',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'In Progress',
+    rampOnTime: '2024-10-15',
+    referred: '2024-09-20',
+    enrollmentAttempted: '2024-09-25',
+    enrollmentCompleted: '2024-10-01',
+    onboardingAttempted: '2024-10-12',
+    onboardingCompleted: null,
+    
+    programStage: 'Not Started',
+    programTime: null,
+    liveSessionsAttended: 0,
+    liveSessionsAvailable: 0,
+    liveSessionAttendance: 'N/A',
+    soloSessionsAttended: 0,
+    soloSessionsAvailable: 0,
+    soloSessionAttendance: 'N/A',
+    cohortId: null,
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 15: Partial Attendance - Mid-Range
+  {
+    id: 'PAT-015',
+    mrn: 'MRN-10015',
+    name: 'O\'Brien, Patrick',
+    state: 'CO',
+    clinicId: 'CLINIC-010',
+    source: 'Direct',
+    currentStage: 'Program',
+    currentSubStage: 'Live Session 14',
+    
+    lastRiskStage: 'Mitigated',
+    lastRiskTime: '2024-10-10',
+    lastRiskType: 'Attendance',
+    lastRiskTriggered: '2024-10-01',
+    lastRiskMitigationAttempted: '2024-10-05',
+    lastRiskMitigationCompleted: '2024-10-10',
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-08-20',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10015',
+    shippedFrom: 'Denver Warehouse',
+    outboundShipped: '2024-08-15',
+    outboundDelivered: '2024-08-20',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-08-25',
+    referred: '2024-07-10',
+    enrollmentAttempted: '2024-07-20',
+    enrollmentCompleted: '2024-07-25',
+    onboardingAttempted: '2024-08-20',
+    onboardingCompleted: '2024-08-25',
+    
+    programStage: 'Active',
+    programTime: '2024-09-01',
+    liveSessionsAttended: 14,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '78%',
+    soloSessionsAttended: 6,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '75%',
+    cohortId: 'COH-003',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 16: Multiple Deferrals History
+  {
+    id: 'PAT-016',
+    mrn: 'MRN-10016',
+    name: 'Patel, Raj',
+    state: 'NJ',
+    clinicId: 'CLINIC-011',
+    source: 'Referral',
+    currentStage: 'Program',
+    currentSubStage: 'Live Session 10',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: 'Completed',
+    lastDeferralTime: '2024-10-15',
+    lastDeferralInitiated: '2024-10-01',
+    lastDeferralCategory: 'Personal',
+    lastDeferralEnded: '2024-10-15',
+    lastClinicAssistanceRequested: '2024-10-02',
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-07-20',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10016',
+    shippedFrom: 'New York Warehouse',
+    outboundShipped: '2024-07-15',
+    outboundDelivered: '2024-07-20',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-07-25',
+    referred: '2024-06-15',
+    enrollmentAttempted: '2024-06-25',
+    enrollmentCompleted: '2024-07-01',
+    onboardingAttempted: '2024-07-20',
+    onboardingCompleted: '2024-07-25',
+    
+    programStage: 'Active',
+    programTime: '2024-08-01',
+    liveSessionsAttended: 10,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '56%',
+    soloSessionsAttended: 5,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '63%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 17: Financial Hardship - Multiple Payment Issues
+  {
+    id: 'PAT-017',
+    mrn: 'MRN-10017',
+    name: 'Quinn, Rachel',
+    state: 'NC',
+    clinicId: 'CLINIC-012',
+    source: 'Direct',
+    currentStage: 'Maintenance',
+    currentSubStage: 'Month 3',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-28',
+    lastRiskType: 'Financial',
+    lastRiskTriggered: '2024-10-20',
+    lastRiskMitigationAttempted: '2024-10-25',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: 'Completed',
+    lastDeferralTime: '2024-09-15',
+    lastDeferralInitiated: '2024-09-01',
+    lastDeferralCategory: 'Financial',
+    lastDeferralEnded: '2024-09-15',
+    lastClinicAssistanceRequested: '2024-09-03',
+    
+    kitStage: 'Returned',
+    kitTime: '2024-09-20',
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10017',
+    shippedFrom: 'Charlotte Warehouse',
+    outboundShipped: '2024-05-10',
+    outboundDelivered: '2024-05-15',
+    inboundRequestAttempted: '2024-09-15',
+    inboundShipped: '2024-09-17',
+    inboundDelivered: '2024-09-20',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-05-20',
+    referred: '2024-04-15',
+    enrollmentAttempted: '2024-04-25',
+    enrollmentCompleted: '2024-05-01',
+    onboardingAttempted: '2024-05-15',
+    onboardingCompleted: '2024-05-20',
+    
+    programStage: 'Completed',
+    programTime: '2024-09-10',
+    liveSessionsAttended: 18,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '100%',
+    soloSessionsAttended: 8,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '100%',
+    cohortId: 'COH-002',
+    
+    maintenanceStage: 'Active',
+    maintenanceTime: '2024-09-15',
+    maintenancePayments: [
+      { month: 1, started: '2024-09-15', paid: true, amount: 299 },
+      { month: 2, started: '2024-10-15', paid: false, amount: 299 },
+      { month: 3, started: '2024-11-15', paid: false, amount: 299 }
+    ],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 18: Zero Attendance - Critical
+  {
+    id: 'PAT-018',
+    mrn: 'MRN-10018',
+    name: 'Rodriguez, Sofia',
+    state: 'AZ',
+    clinicId: 'CLINIC-001',
+    source: 'Referral',
+    currentStage: 'Program',
+    currentSubStage: 'Live Session 1',
+    
+    lastRiskStage: 'Active',
+    lastRiskTime: '2024-10-28',
+    lastRiskType: 'Engagement',
+    lastRiskTriggered: '2024-10-20',
+    lastRiskMitigationAttempted: '2024-10-25',
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Delivered',
+    kitTime: '2024-10-10',
+    kitLocation: 'Patient Home',
+    kitId: 'KIT-10018',
+    shippedFrom: 'Phoenix Warehouse',
+    outboundShipped: '2024-10-05',
+    outboundDelivered: '2024-10-10',
+    inboundRequestAttempted: null,
+    inboundShipped: null,
+    inboundDelivered: null,
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-10-15',
+    referred: '2024-09-15',
+    enrollmentAttempted: '2024-09-25',
+    enrollmentCompleted: '2024-10-01',
+    onboardingAttempted: '2024-10-10',
+    onboardingCompleted: '2024-10-15',
+    
+    programStage: 'Active',
+    programTime: '2024-10-18',
+    liveSessionsAttended: 0,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '0%',
+    soloSessionsAttended: 0,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '0%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 19: Extended Maintenance - Long-term Success
+  {
+    id: 'PAT-019',
+    mrn: 'MRN-10019',
+    name: 'Smith, William',
+    state: 'GA',
+    clinicId: 'CLINIC-013',
+    source: 'Referral',
+    currentStage: 'Maintenance',
+    currentSubStage: 'Month 12',
+    
+    lastRiskStage: null,
+    lastRiskTime: null,
+    lastRiskType: null,
+    lastRiskTriggered: null,
+    lastRiskMitigationAttempted: null,
+    lastRiskMitigationCompleted: null,
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Returned',
+    kitTime: '2024-03-15',
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10019',
+    shippedFrom: 'Atlanta Warehouse',
+    outboundShipped: '2023-12-01',
+    outboundDelivered: '2023-12-05',
+    inboundRequestAttempted: '2024-03-10',
+    inboundShipped: '2024-03-12',
+    inboundDelivered: '2024-03-15',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2023-12-10',
+    referred: '2023-11-01',
+    enrollmentAttempted: '2023-11-10',
+    enrollmentCompleted: '2023-11-15',
+    onboardingAttempted: '2023-12-05',
+    onboardingCompleted: '2023-12-10',
+    
+    programStage: 'Completed',
+    programTime: '2024-03-10',
+    liveSessionsAttended: 18,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '100%',
+    soloSessionsAttended: 8,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '100%',
+    cohortId: 'COH-001',
+    
+    maintenanceStage: 'Active',
+    maintenanceTime: '2024-03-15',
+    maintenancePayments: [
+      { month: 1, started: '2024-03-15', paid: true, amount: 299 },
+      { month: 2, started: '2024-04-15', paid: true, amount: 299 },
+      { month: 3, started: '2024-05-15', paid: true, amount: 299 },
+      { month: 4, started: '2024-06-15', paid: true, amount: 299 },
+      { month: 5, started: '2024-07-15', paid: true, amount: 299 },
+      { month: 6, started: '2024-08-15', paid: true, amount: 299 },
+      { month: 7, started: '2024-09-15', paid: true, amount: 299 },
+      { month: 8, started: '2024-10-15', paid: true, amount: 299 },
+      { month: 9, started: '2024-11-15', paid: true, amount: 299 },
+      { month: 10, started: '2024-12-15', paid: true, amount: 299 },
+      { month: 11, started: '2025-01-15', paid: true, amount: 299 },
+      { month: 12, started: '2025-02-15', paid: true, amount: 299 }
+    ],
+    
+    rampOffStage: 'Not Started',
+    rampOffTime: null,
+    offboardingAttempted: null,
+    offboardingCompleted: null,
+    exitCategory: null,
+    exitDate: null
+  },
+  
+  // CASE 20: Early Exit - Financial
+  {
+    id: 'PAT-020',
+    mrn: 'MRN-10020',
+    name: 'Taylor, Amanda',
+    state: 'MI',
+    clinicId: 'CLINIC-014',
+    source: 'Direct',
+    currentStage: 'Ramp Off',
+    currentSubStage: 'Completed',
+    
+    lastRiskStage: 'Resolved',
+    lastRiskTime: '2024-09-10',
+    lastRiskType: 'Financial',
+    lastRiskTriggered: '2024-09-01',
+    lastRiskMitigationAttempted: '2024-09-05',
+    lastRiskMitigationCompleted: '2024-09-10',
+    
+    lastDeferralStage: null,
+    lastDeferralTime: null,
+    lastDeferralInitiated: null,
+    lastDeferralCategory: null,
+    lastDeferralEnded: null,
+    lastClinicAssistanceRequested: null,
+    
+    kitStage: 'Returned',
+    kitTime: '2024-09-20',
+    kitLocation: 'Warehouse',
+    kitId: 'KIT-10020',
+    shippedFrom: 'Detroit Warehouse',
+    outboundShipped: '2024-07-01',
+    outboundDelivered: '2024-07-05',
+    inboundRequestAttempted: '2024-09-15',
+    inboundShipped: '2024-09-17',
+    inboundDelivered: '2024-09-20',
+    
+    rampOnStage: 'Completed',
+    rampOnTime: '2024-07-10',
+    referred: '2024-06-10',
+    enrollmentAttempted: '2024-06-20',
+    enrollmentCompleted: '2024-06-25',
+    onboardingAttempted: '2024-07-05',
+    onboardingCompleted: '2024-07-10',
+    
+    programStage: 'Incomplete',
+    programTime: '2024-09-10',
+    liveSessionsAttended: 9,
+    liveSessionsAvailable: 18,
+    liveSessionAttendance: '50%',
+    soloSessionsAttended: 4,
+    soloSessionsAvailable: 8,
+    soloSessionAttendance: '50%',
+    cohortId: 'COH-003',
+    
+    maintenanceStage: 'Not Started',
+    maintenanceTime: null,
+    maintenancePayments: [],
+    
+    rampOffStage: 'Completed',
+    rampOffTime: '2024-09-25',
+    offboardingAttempted: '2024-09-20',
+    offboardingCompleted: '2024-09-25',
+    exitCategory: 'DROPPED',
+    exitDate: '2024-09-25'
+  }
+];
+
+export const riskTickets = [
+  {
+    id: 'RISK-001',
+    patientId: 'PAT-002',
+    stage: 'Active',
+    time: '2024-10-28',
+    type: 'Engagement',
+    triggered: '2024-10-25',
+    mitigationAttempted: '2024-10-27',
+    mitigationCompleted: null,
+    priority: 'high',
+    assignedTo: 'Sarah M.',
+    notes: 'Patient missing consecutive sessions. Left voicemail 10/27. No callback yet. Attendance dropped significantly in Week 3.'
+  },
+  
+  // Patient 004 - First Risk (Attendance) - Resolved
+  {
+    id: 'RISK-002',
+    patientId: 'PAT-004',
+    stage: 'Resolved',
+    time: '2024-08-15',
+    type: 'Attendance',
+    triggered: '2024-08-01',
+    mitigationAttempted: '2024-08-05',
+    mitigationCompleted: '2024-08-15',
+    priority: 'medium',
+    assignedTo: 'John D.',
+    notes: 'Missed 2 sessions due to work conflict. Adjusted schedule. Issue resolved.'
+  },
+  
+  // Patient 004 - Second Risk (Payment) - Mitigated
+  {
+    id: 'RISK-003',
+    patientId: 'PAT-004',
+    stage: 'Mitigated',
+    time: '2024-10-20',
+    type: 'Payment',
+    triggered: '2024-10-10',
+    mitigationAttempted: '2024-10-15',
+    mitigationCompleted: '2024-10-20',
+    priority: 'high',
+    assignedTo: 'Emily R.',
+    notes: 'Payment issue resolved with billing department. Set up payment plan.'
+  },
+  
+  // Patient 007 - Active Payment Risk
+  {
+    id: 'RISK-004',
+    patientId: 'PAT-007',
+    stage: 'Active',
+    time: '2024-10-25',
+    type: 'Payment',
+    triggered: '2024-10-20',
+    mitigationAttempted: '2024-10-22',
+    mitigationCompleted: null,
+    priority: 'high',
+    assignedTo: 'Sarah M.',
+    notes: 'Month 3 payment overdue. Patient cited financial hardship. Discussing payment plan options.'
+  },
+  
+  // Patient 008 - Old Resolved Risk
+  {
+    id: 'RISK-005',
+    patientId: 'PAT-008',
+    stage: 'Resolved',
+    time: '2024-07-20',
+    type: 'Attendance',
+    triggered: '2024-07-10',
+    mitigationAttempted: '2024-07-15',
+    mitigationCompleted: '2024-07-20',
+    priority: 'medium',
+    assignedTo: 'John D.',
+    notes: 'Brief attendance dip during Week 4. Patient contacted, attendance improved.'
+  },
+  
+  // Patient 009 - Medical Risk (led to exit)
+  {
+    id: 'RISK-006',
+    patientId: 'PAT-009',
+    stage: 'Resolved',
+    time: '2024-08-15',
+    type: 'Medical',
+    triggered: '2024-08-10',
+    mitigationAttempted: '2024-08-12',
+    mitigationCompleted: '2024-08-15',
+    priority: 'critical',
+    assignedTo: 'Clinical Lead',
+    notes: 'Medical complication requiring treatment. Patient unable to continue program. Doctor recommendation to exit.'
+  },
+  
+  // Patient 011 - Technical Risk (equipment malfunction)
+  {
+    id: 'RISK-007',
+    patientId: 'PAT-011',
+    stage: 'Active',
+    time: '2024-10-28',
+    type: 'Technical',
+    triggered: '2024-10-25',
+    mitigationAttempted: '2024-10-26',
+    mitigationCompleted: null,
+    priority: 'high',
+    assignedTo: 'Tech Support',
+    notes: 'Equipment malfunction reported. Replacement kit being shipped. Patient deferred until new equipment arrives.'
+  },
+  
+  // Patient 013 - Equipment (Lost Kit)
+  {
+    id: 'RISK-008',
+    patientId: 'PAT-013',
+    stage: 'Active',
+    time: '2024-10-28',
+    type: 'Equipment',
+    triggered: '2024-10-15',
+    mitigationAttempted: '2024-10-20',
+    mitigationCompleted: null,
+    priority: 'critical',
+    assignedTo: 'Operations',
+    notes: 'Kit not returned 45 days after program completion. Multiple contact attempts. Escalating to legal for equipment recovery.'
+  },
+  
+  // Patient 014 - Communication Risk
+  {
+    id: 'RISK-009',
+    patientId: 'PAT-014',
+    stage: 'Active',
+    time: '2024-10-28',
+    type: 'Communication',
+    triggered: '2024-10-15',
+    mitigationAttempted: '2024-10-20',
+    mitigationCompleted: null,
+    priority: 'high',
+    assignedTo: 'Sarah M.',
+    notes: 'Unable to reach patient for onboarding. Called 5 times, emailed 3 times. No response. Clinic notified.'
+  },
+  
+  // Patient 015 - Attendance Risk (Mitigated)
+  {
+    id: 'RISK-010',
+    patientId: 'PAT-015',
+    stage: 'Mitigated',
+    time: '2024-10-10',
+    type: 'Attendance',
+    triggered: '2024-10-01',
+    mitigationAttempted: '2024-10-05',
+    mitigationCompleted: '2024-10-10',
+    priority: 'medium',
+    assignedTo: 'John D.',
+    notes: 'Attendance was 60% in Weeks 1-2. Spoke with patient, identified scheduling issue. Helped adjust. Attendance improved to 78%.'
+  },
+  
+  // Patient 017 - Multiple Financial Risks
+  {
+    id: 'RISK-011',
+    patientId: 'PAT-017',
+    stage: 'Resolved',
+    time: '2024-09-10',
+    type: 'Financial',
+    triggered: '2024-09-01',
+    mitigationAttempted: '2024-09-05',
+    mitigationCompleted: '2024-09-10',
+    priority: 'high',
+    assignedTo: 'Billing',
+    notes: 'First payment issue - work hours reduced. Set up payment plan.'
+  },
+  {
+    id: 'RISK-012',
+    patientId: 'PAT-017',
+    stage: 'Active',
+    time: '2024-10-28',
+    type: 'Financial',
+    triggered: '2024-10-20',
+    mitigationAttempted: '2024-10-25',
+    mitigationCompleted: null,
+    priority: 'critical',
+    assignedTo: 'Billing',
+    notes: 'Second payment issue - still on payment plan but 2 months behind. Discussing options with patient.'
+  },
+  
+  // Patient 018 - Engagement (Zero attendance)
+  {
+    id: 'RISK-013',
+    patientId: 'PAT-018',
+    stage: 'Active',
+    time: '2024-10-28',
+    type: 'Engagement',
+    triggered: '2024-10-20',
+    mitigationAttempted: '2024-10-25',
+    mitigationCompleted: null,
+    priority: 'critical',
+    assignedTo: 'Sarah M.',
+    notes: 'CRITICAL: Zero attendance since program start. Patient enrolled but never attended first session. Attempting to contact.'
+  },
+  
+  // Patient 020 - Financial (led to exit)
+  {
+    id: 'RISK-014',
+    patientId: 'PAT-020',
+    stage: 'Resolved',
+    time: '2024-09-10',
+    type: 'Financial',
+    triggered: '2024-09-01',
+    mitigationAttempted: '2024-09-05',
+    mitigationCompleted: '2024-09-10',
+    priority: 'critical',
+    assignedTo: 'Billing',
+    notes: 'Unable to continue due to job loss. Offered reduced rate but patient declined. Exited program.'
+  }
+];
+
+// Comprehensive Deferral Tickets
+export const deferralTickets = [
+  // Patient 003 - Active Medical Deferral
+  {
+    id: 'DEF-001',
+    patientId: 'PAT-003',
+    stage: 'Active',
+    time: '2024-10-15',
+    initiated: '2024-10-15',
+    category: 'Medical',
+    ended: null,
+    clinicAssistanceRequested: '2024-10-16',
+    expectedReturn: '2024-11-15',
+    notes: 'Surgery scheduled for 10/18. Expected recovery 4 weeks. Clinic coordinated with surgeon. Patient committed to returning.'
+  },
+  
+  // Patient 004 - First Deferral (Medical) - Completed
+  {
+    id: 'DEF-002',
+    patientId: 'PAT-004',
+    stage: 'Completed',
+    time: '2024-08-15',
+    initiated: '2024-08-01',
+    category: 'Medical',
+    ended: '2024-08-15',
+    clinicAssistanceRequested: '2024-08-02',
+    expectedReturn: '2024-08-15',
+    notes: 'Dental procedure required 2-week recovery. Returned on schedule.'
+  },
+  
+  // Patient 004 - Second Deferral (Personal) - Completed
+  {
+    id: 'DEF-003',
+    patientId: 'PAT-004',
+    stage: 'Completed',
+    time: '2024-09-30',
+    initiated: '2024-09-01',
+    category: 'Personal',
+    ended: '2024-09-30',
+    clinicAssistanceRequested: '2024-09-02',
+    expectedReturn: '2024-09-30',
+    notes: 'Family emergency - traveled out of state. Maintained communication throughout. Returned as expected.'
+  },
+  
+  // Patient 009 - Medical Deferral (led to exit)
+  {
+    id: 'DEF-004',
+    patientId: 'PAT-009',
+    stage: 'Completed',
+    time: '2024-08-20',
+    initiated: '2024-08-05',
+    category: 'Medical',
+    ended: '2024-08-20',
+    clinicAssistanceRequested: '2024-08-06',
+    expectedReturn: '2024-09-01',
+    notes: 'Medical complication discovered. After deferral period, doctor recommended discontinuing program for medical reasons.'
+  },
+  
+  // Patient 011 - Technical Deferral (Active)
+  {
+    id: 'DEF-005',
+    patientId: 'PAT-011',
+    stage: 'Active',
+    time: '2024-10-20',
+    initiated: '2024-10-20',
+    category: 'Technical',
+    ended: null,
+    clinicAssistanceRequested: '2024-10-21',
+    expectedReturn: '2024-11-05',
+    notes: 'Equipment malfunction - unit not working. Replacement being shipped. Estimated arrival 11/5. Patient on hold until new equipment.'
+  },
+  
+  // Patient 016 - First Deferral (Work) - Completed
+  {
+    id: 'DEF-006',
+    patientId: 'PAT-016',
+    stage: 'Completed',
+    time: '2024-08-30',
+    initiated: '2024-08-15',
+    category: 'Personal',
+    ended: '2024-08-30',
+    clinicAssistanceRequested: '2024-08-16',
+    expectedReturn: '2024-08-30',
+    notes: 'Work training required 2 weeks. Returned on schedule.'
+  },
+  
+  // Patient 016 - Second Deferral (Travel) - Completed
+  {
+    id: 'DEF-007',
+    patientId: 'PAT-016',
+    stage: 'Completed',
+    time: '2024-10-15',
+    initiated: '2024-10-01',
+    category: 'Personal',
+    ended: '2024-10-15',
+    clinicAssistanceRequested: '2024-10-02',
+    expectedReturn: '2024-10-15',
+    notes: 'Family vacation (pre-planned). Communicated well in advance. Returned as scheduled.'
+  },
+  
+  // Patient 017 - Financial Deferral
+  {
+    id: 'DEF-008',
+    patientId: 'PAT-017',
+    stage: 'Completed',
+    time: '2024-09-15',
+    initiated: '2024-09-01',
+    category: 'Financial',
+    ended: '2024-09-15',
+    clinicAssistanceRequested: '2024-09-03',
+    expectedReturn: '2024-09-15',
+    notes: 'Temporary financial hardship - lost job. Set up payment plan. Patient returned to program.'
+  }
+];
+
+export const stages = [
+  'Kit',
+  'Ramp On',
+  'Program',
+  'Maintenance',
+  'Ramp Off'
+];
+
+export const riskTypes = [
+  'Attendance',
+  'Payment',
+  'Engagement',
+  'Medical',
+  'Technical',
+  'Communication',
+  'Equipment',
+  'Financial',
+  'Other'
+];
+
+export const deferralCategories = ['MEDICAL', 'PERSONAL', 'TIMING'];
+
+export const kitLocations = [
+  'IMPILO AZ',
+  'IMPILO PA',
+  'OUTBOUND TRANSIT',
+  'WITH CLINIC X',
+  'WITH PATIENT',
+  'INBOUND TRANSIT'
+];
+
+export const exitCategories = [
+  'PROGRAM COMPLETED',
+  'PROGRAM GRADUATED',
+  'MAINTENANCE ENDED',
+  'DROPPED',
+  'DECLINED',
+  'INELIGIBLE',
+  'UNRESPONSIVE'
+];
+
+export const states = [
+  'AZ', 'CA', 'TX', 'FL', 'NY', 'WA', 'IL', 'MA', 
+  'OR', 'NM', 'VA', 'CO', 'NJ', 'NC', 'GA', 'MI'
+];
+
