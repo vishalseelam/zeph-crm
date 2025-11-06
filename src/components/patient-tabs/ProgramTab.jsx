@@ -1,7 +1,10 @@
-import { Activity, Users, TrendingDown, Calendar, Clock } from 'lucide-react';
+import { Activity, Users, TrendingDown, Calendar, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 import { cohorts } from '../../data';
+import { useState } from 'react';
 
 export default function ProgramTab({ patient, isEditing }) {
+  const [showLiveSessions, setShowLiveSessions] = useState(false);
+  const [showSoloSessions, setShowSoloSessions] = useState(false);
   const calculateProgress = (attended, available) => {
     if (!available || available === 0) return 0;
     return Math.round((attended / available) * 100);
@@ -155,8 +158,8 @@ export default function ProgramTab({ patient, isEditing }) {
               <input
                 type="text"
                 value={cohort.soloDays}
-                className="input-readonly"
-                readOnly
+                className={isEditing ? 'input-field' : 'input-readonly'}
+                readOnly={!isEditing}
               />
             </div>
             <div>
@@ -164,8 +167,8 @@ export default function ProgramTab({ patient, isEditing }) {
               <input
                 type="text"
                 value={cohort.soloTime}
-                className="input-readonly"
-                readOnly
+                className={isEditing ? 'input-field' : 'input-readonly'}
+                readOnly={!isEditing}
               />
             </div>
           </div>
@@ -198,59 +201,88 @@ export default function ProgramTab({ patient, isEditing }) {
         </div>
       </div>
       
-      {/* Progress Bars */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="p-3 bg-white border border-corporate-200 rounded">
-          <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs font-semibold text-brand-primary uppercase">Live</span>
-            <span className="text-sm font-bold text-blue-700">{liveProgress}%</span>
-          </div>
-          <div className="w-full bg-corporate-200 rounded h-2">
-            <div
-              className={`h-2 rounded ${
-                liveProgress >= 75 ? 'bg-green-500' :
-                liveProgress >= 50 ? 'bg-yellow-500' :
-                'bg-red-500'
-              }`}
-              style={{ width: `${liveProgress}%` }}
-            ></div>
-          </div>
-          {isEditing && (
-            <input
-              type="number"
-              value={patient.liveSessionsAttended || 0}
-              className="input-field mt-2"
-              placeholder="Attended"
-            />
+      {/* Session Tracking - Collapsible */}
+      <div className="border-t border-corporate-200 pt-4">
+        {/* Live Sessions */}
+        <div className="mb-3">
+          <button
+            onClick={() => setShowLiveSessions(!showLiveSessions)}
+            className="w-full flex items-center justify-between p-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded transition-colors"
+          >
+            <div className="flex items-center space-x-2">
+              <Calendar className="w-4 h-4 text-blue-600" />
+              <span className="font-semibold text-blue-900 text-sm">Live Sessions</span>
+              <span className="text-xs text-blue-600">
+                ({patient.liveSessionsAttended}/{patient.liveSessionsAvailable} completed)
+              </span>
+            </div>
+            {showLiveSessions ? (
+              <ChevronUp className="w-4 h-4 text-blue-600" />
+            ) : (
+              <ChevronDown className="w-4 h-4 text-blue-600" />
+            )}
+          </button>
+          
+          {showLiveSessions && (
+            <div className="mt-2 p-3 bg-white border border-blue-200 rounded">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                {Array.from({ length: patient.liveSessionsAvailable || 18 }, (_, i) => i + 1).map((sessionNum) => (
+                  <div key={`live-${sessionNum}`}>
+                    <label className="label text-xs">Session {sessionNum}</label>
+                    <input
+                      type="date"
+                      className={isEditing ? 'input-field text-xs' : 'input-readonly text-xs'}
+                      readOnly={!isEditing}
+                      placeholder="Not scheduled"
+                      defaultValue={sessionNum <= patient.liveSessionsAttended ? '2024-10-18' : ''}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
         
-        <div className="p-3 bg-white border border-corporate-200 rounded">
-          <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs font-semibold text-brand-primary uppercase">Solo</span>
-            <span className="text-sm font-bold text-purple-700">{soloProgress}%</span>
-          </div>
-          <div className="w-full bg-corporate-200 rounded h-2">
-            <div
-              className={`h-2 rounded ${
-                soloProgress >= 75 ? 'bg-green-500' :
-                soloProgress >= 50 ? 'bg-yellow-500' :
-                'bg-red-500'
-              }`}
-              style={{ width: `${soloProgress}%` }}
-            ></div>
-          </div>
-          {isEditing && (
-            <input
-              type="number"
-              value={patient.soloSessionsAttended || 0}
-              className="input-field mt-2"
-              placeholder="Attended"
-            />
+        {/* Solo Sessions */}
+        <div>
+          <button
+            onClick={() => setShowSoloSessions(!showSoloSessions)}
+            className="w-full flex items-center justify-between p-3 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded transition-colors"
+          >
+            <div className="flex items-center space-x-2">
+              <Calendar className="w-4 h-4 text-purple-600" />
+              <span className="font-semibold text-purple-900 text-sm">Solo Sessions</span>
+              <span className="text-xs text-purple-600">
+                ({patient.soloSessionsAttended}/{patient.soloSessionsAvailable} completed)
+              </span>
+            </div>
+            {showSoloSessions ? (
+              <ChevronUp className="w-4 h-4 text-purple-600" />
+            ) : (
+              <ChevronDown className="w-4 h-4 text-purple-600" />
+            )}
+          </button>
+          
+          {showSoloSessions && (
+            <div className="mt-2 p-3 bg-white border border-purple-200 rounded">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                {Array.from({ length: patient.soloSessionsAvailable || 8 }, (_, i) => i + 1).map((sessionNum) => (
+                  <div key={`solo-${sessionNum}`}>
+                    <label className="label text-xs">Session {sessionNum}</label>
+                    <input
+                      type="date"
+                      className={isEditing ? 'input-field text-xs' : 'input-readonly text-xs'}
+                      readOnly={!isEditing}
+                      placeholder="Not scheduled"
+                      defaultValue={sessionNum <= patient.soloSessionsAttended ? '2024-10-18' : ''}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>
     </div>
   );
 }
-

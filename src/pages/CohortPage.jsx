@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Edit2, Users, Calendar, Clock, Video, User, ChevronRight } from 'lucide-react';
+import { Plus, Edit2, Users, Calendar, Clock, Video, User, ChevronRight, Search } from 'lucide-react';
 import { cohorts, patients, cohortTypes, liveSessionTypes } from '../data';
 
 export default function CohortPage() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedCohort, setSelectedCohort] = useState(null);
   const [selectedPatients, setSelectedPatients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   
   // Get patients for a cohort
   const getCohortPatients = (cohortId) => {
@@ -83,6 +84,28 @@ export default function CohortPage() {
     );
   };
   
+  // Filter cohorts based on search
+  const filteredCohorts = useMemo(() => {
+    if (!searchTerm) return cohorts;
+    
+    const lowerSearch = searchTerm.toLowerCase();
+    
+    return cohorts.filter(cohort => {
+      // Search by cohort ID
+      if (cohort.id.toLowerCase().includes(lowerSearch)) {
+        return true;
+      }
+      
+      // Search by patient names in this cohort
+      const cohortPatients = getCohortPatients(cohort.id);
+      const hasMatchingPatient = cohortPatients.some(patient => 
+        patient.name.toLowerCase().includes(lowerSearch)
+      );
+      
+      return hasMatchingPatient;
+    });
+  }, [searchTerm]);
+  
   return (
     <div className="space-y-4">
       {/* Page Header - Branded */}
@@ -90,7 +113,7 @@ export default function CohortPage() {
         <div>
           <h2 className="text-2xl font-bold text-brand-primary">Cohort Management</h2>
           <p className="text-sm text-corporate-600 mt-0.5">
-            {cohorts.length} active cohorts
+            {filteredCohorts.length} of {cohorts.length} cohorts
           </p>
         </div>
         <button
@@ -102,10 +125,42 @@ export default function CohortPage() {
         </button>
       </div>
       
-      {/* Sleek Cohorts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {cohorts.map((cohort) => {
-          const cohortPatients = getCohortPatients(cohort.id);
+      {/* Search Bar */}
+      <div className="relative">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-corporate-400" />
+        <input
+          type="text"
+          placeholder="Search by cohort ID or patient name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full pl-10 pr-4 py-2 border border-corporate-300 rounded focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm"
+        />
+        {searchTerm && (
+          <button
+            onClick={() => setSearchTerm('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-corporate-400 hover:text-corporate-600 text-xs"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+      
+      {/* Cohort Cards - Compact Grid */}
+      {filteredCohorts.length === 0 ? (
+        <div className="text-center py-12 bg-corporate-50 rounded">
+          <Users className="w-12 h-12 text-corporate-400 mx-auto mb-3" />
+          <p className="text-corporate-600">No cohorts found matching "{searchTerm}"</p>
+          <button
+            onClick={() => setSearchTerm('')}
+            className="mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium"
+          >
+            Clear search
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {filteredCohorts.map((cohort) => {
+            const cohortPatients = getCohortPatients(cohort.id);
           
           return (
             <div key={cohort.id} className="card p-3 hover:shadow transition-shadow border-l-2 border-l-brand-primary">
@@ -165,6 +220,7 @@ export default function CohortPage() {
           );
         })}
       </div>
+      )}
       
       {/* Weekly Schedule Calendar - Sleek */}
       <div className="card">
