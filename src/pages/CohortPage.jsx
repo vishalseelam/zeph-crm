@@ -384,44 +384,89 @@ export default function CohortPage() {
                 </div>
                 
                 {/* Patient Assignment */}
-                {!selectedCohort && (
-                  <div className="border-t border-corporate-200 pt-4">
-                    <h4 className="font-medium text-corporate-900 mb-3">Assign Patients (Optional)</h4>
-                    <div className="max-h-60 overflow-y-auto border border-corporate-200 rounded-lg">
-                      {getUnassignedPatients().length === 0 ? (
-                        <div className="p-4 text-center text-sm text-corporate-500">
-                          No unassigned patients available
-                        </div>
-                      ) : (
-                        <div className="divide-y divide-corporate-200">
-                          {getUnassignedPatients().map(patient => (
-                            <label
-                              key={patient.id}
-                              className="flex items-center space-x-3 p-3 hover:bg-corporate-50 cursor-pointer"
-                            >
-                              <input
-                                type="checkbox"
-                                checked={selectedPatients.includes(patient.id)}
-                                onChange={() => togglePatientSelection(patient.id)}
-                                className="w-4 h-4 text-primary-600"
-                              />
-                              <div className="flex-1">
-                                <div className="text-sm font-medium text-corporate-900">{patient.name}</div>
-                                <div className="text-xs text-corporate-500">{patient.id} • {patient.state}</div>
+                <div className="border-t border-corporate-200 pt-4">
+                  {selectedCohort ? (
+                    // EDIT MODE - Show assigned patients
+                    <>
+                      <h4 className="font-medium text-corporate-900 mb-3">
+                        Assigned Patients ({getCohortPatients(selectedCohort.id).length}/{selectedCohort.size})
+                      </h4>
+                      <div className="max-h-60 overflow-y-auto border border-corporate-200 rounded-lg">
+                        {getCohortPatients(selectedCohort.id).length === 0 ? (
+                          <div className="p-4 text-center text-sm text-corporate-500">
+                            No patients assigned to this cohort
+                          </div>
+                        ) : (
+                          <div className="divide-y divide-corporate-200">
+                            {getCohortPatients(selectedCohort.id).map(patient => (
+                              <div
+                                key={patient.id}
+                                className="flex items-center justify-between p-3 hover:bg-corporate-50"
+                              >
+                                <div className="flex items-center space-x-3">
+                                  <User className="w-4 h-4 text-corporate-400" />
+                                  <div>
+                                    <div className="text-sm font-medium text-corporate-900">{patient.name}</div>
+                                    <div className="text-xs text-corporate-500">{patient.id} • {patient.state}</div>
+                                  </div>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                  <span className="text-xs px-2 py-0.5 bg-corporate-100 rounded text-corporate-700">
+                                    {patient.currentStage}
+                                  </span>
+                                  <Link
+                                    to={`/patient/${patient.id}`}
+                                    className="text-xs text-primary-600 hover:text-primary-700 font-medium"
+                                  >
+                                    View
+                                  </Link>
+                                </div>
                               </div>
-                              <span className="text-xs text-corporate-600">{patient.currentStage}</span>
-                            </label>
-                          ))}
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    // CREATE MODE - Show unassigned patients
+                    <>
+                      <h4 className="font-medium text-corporate-900 mb-3">Assign Patients (Optional)</h4>
+                      <div className="max-h-60 overflow-y-auto border border-corporate-200 rounded-lg">
+                        {getUnassignedPatients().length === 0 ? (
+                          <div className="p-4 text-center text-sm text-corporate-500">
+                            No unassigned patients available
+                          </div>
+                        ) : (
+                          <div className="divide-y divide-corporate-200">
+                            {getUnassignedPatients().map(patient => (
+                              <label
+                                key={patient.id}
+                                className="flex items-center space-x-3 p-3 hover:bg-corporate-50 cursor-pointer"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={selectedPatients.includes(patient.id)}
+                                  onChange={() => togglePatientSelection(patient.id)}
+                                  className="w-4 h-4 text-primary-600"
+                                />
+                                <div className="flex-1">
+                                  <div className="text-sm font-medium text-corporate-900">{patient.name}</div>
+                                  <div className="text-xs text-corporate-500">{patient.id} • {patient.state}</div>
+                                </div>
+                                <span className="text-xs text-corporate-600">{patient.currentStage}</span>
+                              </label>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      {selectedPatients.length > 0 && (
+                        <div className="mt-2 text-sm text-primary-600">
+                          {selectedPatients.length} patient{selectedPatients.length !== 1 ? 's' : ''} selected
                         </div>
                       )}
-                    </div>
-                    {selectedPatients.length > 0 && (
-                      <div className="mt-2 text-sm text-primary-600">
-                        {selectedPatients.length} patient{selectedPatients.length !== 1 ? 's' : ''} selected
-                      </div>
-                    )}
-                  </div>
-                )}
+                    </>
+                  )}
+                </div>
               </div>
               
               <div className="flex justify-end space-x-3 mt-6 pt-6 border-t border-corporate-200">
